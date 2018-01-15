@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Dec 28, 2017 4:14:48 PM by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
-    <class name="webapp.ToDoItem" table="TODOITEM">
+    <class name="com.yai.hibernate.object.ToDoItem" table="TODOITEM">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
