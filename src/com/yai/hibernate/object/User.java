@@ -7,6 +7,8 @@ public class User {
 	private String email;
 	private String password;
 	
+	public User() {}
+	
 	public User(int _id, String _firstName, String _lastName, String _email, String _password){
 		id = _id;
 		firstName = _firstName;
@@ -20,6 +22,14 @@ public class User {
 		lastName = _lastName;
 		email = _email;
 		password = _password;
+	}
+	
+	public User (User _user) {
+		id = _user.getId();
+		firstName = _user.getFirstName();
+		lastName = _user.getLastName();
+		email = _user.getEmail();
+		password = _user.getPassword();
 	}
 
 	public int getId() {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.yai.hibernate.dao.UserDAO;
+import com.yai.hibernate.object.User;
 
 public class UserControllerServlet extends HttpServlet{
 	
@@ -28,6 +29,22 @@ public class UserControllerServlet extends HttpServlet{
 		try {
 			UserDAO userDAO = new UserDAO();
 			userDAO.addUser(email, password, firstName, lastName);
+			response.sendRedirect("Login");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	 }
+	 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws
+		ServletException, IOException {
+		
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		HttpSession session = request.getSession(true);
+		try {
+			UserDAO userDAO = new UserDAO();
+			User user = new User(userDAO.getUser(email, password));
+			session.setAttribute("currentSessionUser", user);
 			response.sendRedirect("Login");
 		} catch (Exception e) {
 			e.printStackTrace();

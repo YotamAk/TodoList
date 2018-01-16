@@ -19,7 +19,6 @@
                 <td>Password :</td>
                 <td><input type="password" name="password" size="30" /></td>
             </tr>
- 
             <tr>
                 <td>Confirm Password :</td>
                 <td><input type="password" name="password2" size="30" /></td>
