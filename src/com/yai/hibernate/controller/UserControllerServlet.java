@@ -12,9 +12,6 @@ import com.yai.hibernate.object.User;
 
 public class UserControllerServlet extends HttpServlet{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws
@@ -43,8 +40,10 @@ public class UserControllerServlet extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		try {
 			UserDAO userDAO = new UserDAO();
-			User user = new User(userDAO.getUser(email, password));
-			session.setAttribute("currentSessionUser", user);
+			User user = new User();
+			//user = userDAO.getUser(email, password);
+			System.out.println(userDAO.getUser(email, password).getId());
+			//session.setAttribute("currentSessionUser", user);
 			response.sendRedirect("Login");
 		} catch (Exception e) {
 			e.printStackTrace();
