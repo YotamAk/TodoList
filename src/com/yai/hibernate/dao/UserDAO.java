@@ -49,8 +49,9 @@ public class UserDAO {
             System.out.print("error: ");
             System.out.println(e.getMessage());
 		}
-		if (user.getPassword() == password) 
+		if (user.getPassword().equals(password)){
 			return user;
+		}	
 		return null;
 		
 	}

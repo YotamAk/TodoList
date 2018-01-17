@@ -39,12 +39,13 @@ public class UserControllerServlet extends HttpServlet{
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession(true);
 		try {
+			//create a userDAO object to get user data by email and check by password
 			UserDAO userDAO = new UserDAO();
-			User user = new User();
-			//user = userDAO.getUser(email, password);
-			System.out.println(userDAO.getUser(email, password).getId());
-			//session.setAttribute("currentSessionUser", user);
-			response.sendRedirect("Login");
+			User user = new User(userDAO.getUser(email, password));
+			System.out.println(user);
+			session.setAttribute("firstName", user.getFirstName());
+			session.setAttribute("currentSessionUser", user);
+			response.sendRedirect("todo");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
