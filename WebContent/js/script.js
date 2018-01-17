@@ -46,8 +46,10 @@ function countTodos(){
 function createTodo(text){
     var markup = '<li class="ui-state-default"><div class="checkbox"><label><input type="checkbox" value="" />'+ text +'</label></div></li>';
     $('#sortable').append(markup);
+    com.yai.hibernate.dao.HibernateToDoListDAO.getInstance().addItem(1, text);
     $('.add-todo').val('');
 }
+
 
 //mark task as done
 function done(doneItem){
@@ -78,4 +80,5 @@ function AllDone(){
 //remove done task from list
 function removeItem(element){
     $(element).parent().remove();
+    alert(element);
 }

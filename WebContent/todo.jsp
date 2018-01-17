@@ -15,10 +15,9 @@
 	    <div class="row">
 	        <div class="col-md-6">
 	            <div class="todolist not-done">
-	            <% com.yai.hibernate.object.User currentUser = (com.yai.hibernate.object.User) (session.getAttribute("currentSessionUser"));%>
-	            <%String firstName = (String)session.getAttribute("firstName"); %>
+	            <% com.yai.hibernate.object.User currentUser = (com.yai.hibernate.object.User) (session.getAttribute("currentSessionUser"));%> 
 	             <h1><%=currentUser.getFirstName()%>s Todos</h1>
-	                <input type="text" class="form-control add-todo" placeholder="Add todo">
+	                <form action="user" method="post"><input type="text" class="form-control add-todo" placeholder="Add todo" value=""></form>
 	                    <button id="checkAll" class="btn btn-success">Mark all as done</button>
 	                    
 	                    <hr>
@@ -58,6 +57,6 @@
 	        </div>
 	    </div>
 	</div>
-	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript"><%@include file="js/script.js"%></script>
 </body>
 </html>

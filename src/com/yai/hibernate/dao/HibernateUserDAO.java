@@ -6,13 +6,17 @@ import org.hibernate.cfg.Configuration;
 
 import com.yai.hibernate.object.*;
 
-public class UserDAO {
+public class HibernateUserDAO implements IUserDAO {
+	
+	//singleton instance
+	private static final HibernateUserDAO instance = new HibernateUserDAO();
+	
 	private Configuration configuration;
 	private SessionFactory sessionFactory;
 	private Session session;
 	private Transaction transaction;
 	
-	public UserDAO() {
+	public HibernateUserDAO() {
 		//config hibernate
 		configuration = new Configuration().configure();
 		//sessionFactory

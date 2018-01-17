@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import com.yai.hibernate.dao.UserDAO;
+
+import com.yai.hibernate.dao.HibernateToDoListDAO;
+import com.yai.hibernate.dao.HibernateUserDAO;
 import com.yai.hibernate.object.User;
 
 public class UserControllerServlet extends HttpServlet{
@@ -24,7 +26,7 @@ public class UserControllerServlet extends HttpServlet{
 		
 		HttpSession session = request.getSession(true);
 		try {
-			UserDAO userDAO = new UserDAO();
+			HibernateUserDAO userDAO = new HibernateUserDAO();
 			userDAO.addUser(email, password, firstName, lastName);
 			response.sendRedirect("Login");
 		} catch (Exception e) {
@@ -40,9 +42,8 @@ public class UserControllerServlet extends HttpServlet{
 		HttpSession session = request.getSession(true);
 		try {
 			//create a userDAO object to get user data by email and check by password
-			UserDAO userDAO = new UserDAO();
+			HibernateUserDAO userDAO = new HibernateUserDAO();
 			User user = new User(userDAO.getUser(email, password));
-			System.out.println(user);
 			session.setAttribute("firstName", user.getFirstName());
 			session.setAttribute("currentSessionUser", user);
 			response.sendRedirect("todo");

@@ -7,9 +7,9 @@
         <servlet-class>com.yai.hibernate.controller.UserControllerServlet</servlet-class>
     </servlet>
     <servlet>
-        <display-name>Login</display-name>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.yai.hibernate.controller.LoginControllerServlet</servlet-class>
+        <display-name>item</display-name>
+        <servlet-name>item</servlet-name>
+        <servlet-class>com.yai.hibernate.controller.ItemControllerServlet</servlet-class>
     </servlet>
     <servlet>
         <display-name>ToDo</display-name>
@@ -18,11 +18,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>User</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <servlet-name>item</servlet-name>
+        <url-pattern>/item</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>todo</servlet-name>
