@@ -6,34 +6,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Registration Form</title>
+<style type="text/css"><%@include file="css/style.css" %></style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Registration Form</h1>
-    <form action="register" method="post">
-        <table cellpadding="3pt">
-            <tr>
-                <td>Email :</td>
-                <td><input type="text" name="email" size="30" /></td>
-            </tr>	
-            <tr>
-                <td>Password :</td>
-                <td><input type="password" name="password" size="30" /></td>
-            </tr>
-            <tr>
-                <td>Confirm Password :</td>
-                <td><input type="password" name="password2" size="30" /></td>
-            </tr>
-            <tr>
-                <td>First name:</td>
-                <td><input type="text" name="firstName" size="30" /></td>
-            </tr>
-            <tr>
-                <td>Last name:</td>
-                <td><input type="text" name="lastName" size="30" /></td>
-            </tr>
-        </table>
-        <p />
-        <input type="submit" value="Register" />
-    </form>
+	<div class="register-page">
+	    <div class="form">
+		    <form action="register" method="post">
+		    	<h2 class="text-primary page-header">Registration</h2>
+		        <table cellpadding="3pt">
+		            <tr>
+		                <td>Email :</td>
+		                <td><input type="text" name="email" size="30"/></td>
+		            </tr>	
+		            <tr>
+		                <td>Password :</td>
+		                <td><input type="password" name="password" size="30" /></td>
+		            </tr>
+		            <tr>
+		                <td>Confirm Password :</td>
+		                <td><input type="password" name="password2" size="30" /></td>
+		            </tr>
+		            <tr>
+		                <td>First name:</td>
+		                <td><input type="text" name="firstName" size="30" /></td>
+		            </tr>
+		            <tr>
+		                <td>Last name:</td>
+		                <td><input type="text" name="lastName" size="30" /></td>
+		            </tr>
+		        </table>
+		        <button class= "btn btn-primary" type="submit" value="Index" >Register</button>
+		    </form>
+	    </div>
+    </div>
 </body>
 </html>

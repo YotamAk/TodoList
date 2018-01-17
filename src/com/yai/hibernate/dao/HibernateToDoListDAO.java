@@ -1,8 +1,18 @@
 package com.yai.hibernate.dao;
 
+import java.util.List;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import com.yai.hibernate.object.ToDoItem;
+import com.yai.hibernate.object.User;
 
 public class HibernateToDoListDAO implements IToDoListDAO {
+	private SessionFactory sessionFactory;
+	private Session session;
 	//singleton instance
 	private static final HibernateToDoListDAO instance = new HibernateToDoListDAO();
 	
@@ -22,8 +32,14 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 
 	@Override
 	public void removeItem(int itemId) {
-		// TODO Auto-generated method stub
-		
+		try {
+			//get user details
+			String hql = "DELETE FROM todoitem WHERE id= :itemId";
+			Query query = session.createQuery(hql);
+		} catch(HibernateException e) {
+            System.out.print("error: ");
+            System.out.println(e.getMessage());
+		}
 	}
 
 	@Override

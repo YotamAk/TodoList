@@ -6,7 +6,7 @@
     <class name="com.yai.hibernate.object.ToDoItem" table="TODOITEM">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="userId" type="int">
             <column name="USERID" />

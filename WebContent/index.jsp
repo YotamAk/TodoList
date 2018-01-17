@@ -17,7 +17,7 @@
 	      <input type="text" placeholder="email" name="email"/>
 	      <input type="password" placeholder="password" name="password"/>
 	      <button class="btn btn-success" value="Register">login</button>
-	      <p class="text-success">Not registered? <a class="text-danger" href="mailto:Isaac.Shahar@verint.com">Register here</a></p>
+	      <p class="text-success">Not registered? <a class="text-danger" href="/register">Register here</a></p>
 	    </form>
 	  </div>
 	</div>
