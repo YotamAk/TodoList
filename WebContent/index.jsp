@@ -12,12 +12,13 @@
 <body>
 	<div class="login-page">
 	  <div class="form">
-	    <form class="login-form" action="register" method="GET">
+	    <form class="login-form" action="login" method="GET">
 	      <h3 class="text-success page-header">Welcome</h3>
 	      <input type="text" placeholder="email" name="email"/>
 	      <input type="password" placeholder="password" name="password"/>
-	      <button class="btn btn-success" value="Register">login</button>
-	      <p class="text-success">Not registered? <a class="text-danger" href="/register">Register here</a></p>
+	      <button class="btn btn-success" value="login">login</button>
+	      <p class="text-success">Not registered? <a class="text-danger" href="register.jsp">Register here</a></p>
+
 	    </form>
 	  </div>
 	</div>

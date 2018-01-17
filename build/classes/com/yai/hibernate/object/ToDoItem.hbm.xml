@@ -6,13 +6,10 @@
     <class name="com.yai.hibernate.object.ToDoItem" table="TODOITEM">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <property name="userId" type="int">
             <column name="USERID" />
-        </property>
-        <property name="title" type="java.lang.String">
-            <column name="TITLE" />
         </property>
         <property name="data" type="java.lang.String">
             <column name="DATA" />
