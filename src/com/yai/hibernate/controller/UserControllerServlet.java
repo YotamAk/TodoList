@@ -1,6 +1,7 @@
 package com.yai.hibernate.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,7 @@ public class UserControllerServlet extends HttpServlet{
 		try {
 			HibernateUserDAO userDAO = new HibernateUserDAO();
 			userDAO.addUser(email, password, firstName, lastName);
-			response.sendRedirect("Login");
+			response.sendRedirect("index.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -44,8 +45,10 @@ public class UserControllerServlet extends HttpServlet{
 			//create a userDAO object to get user data by email and check by password
 			HibernateUserDAO userDAO = new HibernateUserDAO();
 			User user = new User(userDAO.getUser(email, password));
-			session.setAttribute("firstName", user.getFirstName());
+			List tasks = HibernateToDoListDAO.getInstance().getAllItems(user.getId());
 			session.setAttribute("currentSessionUser", user);
+			session.setAttribute("firstName", user.getFirstName());
+			session.setAttribute("currentSessionTasks", tasks);
 			response.sendRedirect("todo");
 		} catch (Exception e) {
 			e.printStackTrace();

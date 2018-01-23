@@ -13,10 +13,18 @@
 <body>
 	<div class="register-page">
 	    <div class="form">
-		    <form action="register" method="post">
+		    <form action="login" method="post">
 		    	<h2 class="text-primary page-header">Registration</h2>
 		        <table cellpadding="3pt">
 		            <tr>
+		             <tr>
+		                <td>First name:</td>
+		                <td><input type="text" name="firstName" size="30" /></td>
+		            </tr>
+		            <tr>
+		                <td>Last name:</td>
+		                <td><input type="text" name="lastName" size="30" /></td>
+		            </tr>
 		                <td>Email :</td>
 		                <td><input type="text" name="email" size="30"/></td>
 		            </tr>	
@@ -28,16 +36,8 @@
 		                <td>Confirm Password :</td>
 		                <td><input type="password" name="password2" size="30" /></td>
 		            </tr>
-		            <tr>
-		                <td>First name:</td>
-		                <td><input type="text" name="firstName" size="30" /></td>
-		            </tr>
-		            <tr>
-		                <td>Last name:</td>
-		                <td><input type="text" name="lastName" size="30" /></td>
-		            </tr>
 		        </table>
-		        <button class= "btn btn-primary" type="submit" value="Index" >Register</button>
+		        <button class= "btn btn-primary" type="submit" value="login" >Register</button>
 		    </form>
 	    </div>
     </div>

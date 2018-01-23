@@ -7,9 +7,14 @@
         <servlet-class>com.yai.hibernate.controller.UserControllerServlet</servlet-class>
     </servlet>
     <servlet>
-        <display-name>item</display-name>
-        <servlet-name>item</servlet-name>
-        <servlet-class>com.yai.hibernate.controller.ItemControllerServlet</servlet-class>
+        <display-name>newItem</display-name>
+        <servlet-name>newItem</servlet-name>
+        <servlet-class>com.yai.hibernate.controller.InsertItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <display-name>removeItem</display-name>
+        <servlet-name>removeItem</servlet-name>
+        <servlet-class>com.yai.hibernate.controller.RemoveItemServlet</servlet-class>
     </servlet>
     <servlet>
         <display-name>ToDo</display-name>
@@ -26,8 +31,12 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>item</servlet-name>
-        <url-pattern>/item</url-pattern>
+        <servlet-name>newItem</servlet-name>
+        <url-pattern>/InsertItemServlet</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>removeItem</servlet-name>
+        <url-pattern>/RemoveItemServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>todo</servlet-name>

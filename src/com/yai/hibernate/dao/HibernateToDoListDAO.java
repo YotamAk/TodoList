@@ -1,17 +1,14 @@
 package com.yai.hibernate.dao;
 
-import java.util.List;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.mapping.List;
+import java.util.List;
 
 import com.yai.hibernate.object.ToDoItem;
-import com.yai.hibernate.object.User;
 
 
 public class HibernateToDoListDAO implements IToDoListDAO {
@@ -52,12 +49,30 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 	public void removeItem(int itemId) {
 		try {
 			//get user details
-			String hql = "DELETE FROM todoitem WHERE id= :itemId";
+			String hql = "DELETE FROM ToDoItem WHERE id= :itemId";
 			Query query = session.createQuery(hql);
+			query.setParameter("itemId", itemId);
 		} catch(HibernateException e) {
             System.out.print("error: ");
             System.out.println(e.getMessage());
 		}
+	}
+	
+	@Override
+	public void removeItem(int userId, String data) {
+		try {
+			//get user details
+			String hql = "DELETE FROM ToDoItem WHERE DATA= :data AND USERID= :userid";
+			Query query = session.createQuery(hql);
+			query.setParameter("data", data);
+			query.setParameter("userid", userId);
+			query.executeUpdate();
+			transaction.commit();
+		} catch(HibernateException e) {
+            System.out.print("error: ");
+            System.out.println(e.getMessage());
+		}
+		
 	}
 
 	@Override
@@ -66,16 +81,20 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 		return null;
 	}
 
-	@Override
-	public void updateItem(ToDoItem item) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
-	public List getAllItems(int user_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List getAllItems(int userid) {
+		List results = null;
+		try {
+			//get user details
+			String hql = "FROM ToDoItem WHERE USERID = :userid";
+			Query query = session.createQuery(hql);
+			query.setParameter("userid", userid);
+			results = query.list();
+		} catch(HibernateException e) {
+            System.out.print("error: ");
+            System.out.println(e.getMessage());
+		}
+		return results;
 	}
-
 }

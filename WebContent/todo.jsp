@@ -1,5 +1,7 @@
+<%@page import="com.yai.hibernate.object.ToDoItem"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,30 +18,24 @@
 	        <div class="col-md-6">
 	            <div class="todolist not-done">
 	            <% com.yai.hibernate.object.User currentUser = (com.yai.hibernate.object.User) (session.getAttribute("currentSessionUser"));%> 
-	             <h1><%=currentUser.getFirstName()%>s Todos</h1>
-	                <form action="user" method="post"><input type="text" class="form-control add-todo" placeholder="Add todo" value=""></form>
-	                    <button id="checkAll" class="btn btn-success">Mark all as done</button>
-	                    
+	             <h1><%=currentUser.getFirstName()%>s Todos</h1>             
+	             		<input type="hidden" class="user-id" value="<%=currentUser.getId()%>" name="userid">
+	             	    <input type="text" class="form-control add-todo" name="newItem"><br>
+	                	<button class="additem btn btn-info" value="item" >Add</button><br>
+				 <button id="checkAll" class="btn btn-success">Mark all as done</button> 
 	                    <hr>
 	                    <ul id="sortable" class="list-unstyled">
-	                    <li class="ui-state-default">
-	                        <div class="checkbox">
-	                            <label>
-	                                <input id="testing" type="checkbox" value="" />Take out the trash</label>
-	                        </div>
-	                    </li>
-	                    <li class="ui-state-default">
-	                        <div class="checkbox">
-	                            <label>
-	                                <input type="checkbox" value="" />Buy bread</label>
-	                        </div>
-	                    </li>
-	                    <li class="ui-state-default">
-	                        <div class="checkbox">
-	                            <label>
-	                                <input type="checkbox" value="" />Teach penguins to fly</label>
-	                        </div>
-	                    </li>
+	                    	<%Iterator itr = null; %>
+	                    	<%List data = (List) session.getAttribute("currentSessionTasks");
+	                    	for (itr = data.iterator(); itr.hasNext();) {
+	                    		%>
+	                  			<% ToDoItem s = (ToDoItem) itr.next(); %>
+	                    		<li class="ui-state-default">
+			                        <div class="checkbox">
+			                            <label><input type="checkbox" name="<%=s.getData()%>" value="" /><%=s.getData()%></label>
+			                        </div>
+			                    </li>
+	                    	<%}%>
 	                </ul>
 	                <div class="todo-footer">
 	                    <strong><span class="count-todos"></span></strong> Items Left
@@ -49,10 +45,7 @@
 	        <div class="col-md-6">
 	            <div class="todolist">
 	             <h1>Already Done</h1>
-	                <ul id="done-items" class="list-unstyled">
-	                    <li>Some item <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>
-	                    
-	                </ul>
+	                <ul id="done-items" class="list-unstyled"></ul>
 	            </div>
 	        </div>
 	    </div>
