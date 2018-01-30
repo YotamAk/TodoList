@@ -16,6 +16,11 @@
         <servlet-name>removeItem</servlet-name>
         <servlet-class>com.yai.hibernate.controller.RemoveItemServlet</servlet-class>
     </servlet>
+        <servlet>
+        <display-name>removeAllItems</display-name>
+        <servlet-name>removeAllItems</servlet-name>
+        <servlet-class>com.yai.hibernate.controller.MarkAllItemsDoneServlet</servlet-class>
+    </servlet>
     <servlet>
         <display-name>ToDo</display-name>
         <servlet-name>todo</servlet-name>
@@ -34,9 +39,13 @@
         <servlet-name>newItem</servlet-name>
         <url-pattern>/InsertItemServlet</url-pattern>
     </servlet-mapping>
-        <servlet-mapping>
+    <servlet-mapping>
         <servlet-name>removeItem</servlet-name>
         <url-pattern>/RemoveItemServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removeAllItems</servlet-name>
+        <url-pattern>/MarkAllItemsDoneServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>todo</servlet-name>

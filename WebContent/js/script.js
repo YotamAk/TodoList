@@ -57,7 +57,7 @@ function countTodos(){
 function createTodo(text){
     var markup = '<li class="ui-state-default"><div class="checkbox"><label><input type="checkbox" name=' + text + ' value="" />'+ text +'</label></div></li>';
     $('#sortable').append(markup);
-    InsertItemServletCall(text);
+    insertItemServletCall(text);
     $('.add-todo').val('');
 }
 
@@ -86,6 +86,7 @@ function AllDone(){
     // myArray
     $('#sortable li').remove();
     countTodos();
+    markAllItemsDoneServlet();
 }
 
 //remove done task from list
@@ -95,7 +96,7 @@ function removeItem(element){
 
 //Servlets calls
 
-function InsertItemServletCall(text) {
+function insertItemServletCall(text) {
 	$.ajax({
 		url: "InsertItemServlet",
 		type: "post",
@@ -111,6 +112,15 @@ function removeItemServletCall(doneItem) {
 		type: "post",
 		data: {'removeItem': doneItem,
 				'userid': $('.user-id').val()},
+		success:function() {}
+	});
+}
+
+function markAllItemsDoneServlet() {
+	$.ajax({
+		url: "MarkAllItemsDoneServlet",
+		type: "post",
+		data: {'userid': $('.user-id').val()},
 		success:function() {}
 	});
 }

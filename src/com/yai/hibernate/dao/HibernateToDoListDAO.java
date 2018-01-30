@@ -39,10 +39,15 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 
 	@Override
 	public void addItem(int userId,String data) {
+		if(transaction.wasCommitted())
+			transaction = session.beginTransaction();
 		ToDoItem item = new ToDoItem(userId, data);
+		System.out.println(item.toString());
 		session.save(item);
-		if(!transaction.wasCommitted())
+		if(!transaction.wasCommitted()){
 			transaction.commit();
+		}
+			
 	}
 
 	@Override
@@ -61,13 +66,13 @@ public class HibernateToDoListDAO implements IToDoListDAO {
 	@Override
 	public void removeItem(int userId, String data) {
 		try {
-			//get user details
+			//delete user item by data name
 			String hql = "DELETE FROM ToDoItem WHERE DATA= :data AND USERID= :userid";
 			Query query = session.createQuery(hql);
 			query.setParameter("data", data);
 			query.setParameter("userid", userId);
 			query.executeUpdate();
-			transaction.commit();
+			//transaction.commit();
 		} catch(HibernateException e) {
             System.out.print("error: ");
             System.out.println(e.getMessage());
@@ -96,5 +101,21 @@ public class HibernateToDoListDAO implements IToDoListDAO {
             System.out.println(e.getMessage());
 		}
 		return results;
+	}
+
+	@Override
+	public void removeAllItems(int userId) {
+		try {
+			//delete all items by user id
+			String hql = "DELETE FROM ToDoItem WHERE USERID= :userid";
+			Query query = session.createQuery(hql);
+			query.setParameter("userid", userId);
+			query.executeUpdate();
+			//transaction.commit();
+		} catch(HibernateException e) {
+            System.out.print("error: ");
+            System.out.println(e.getMessage());
+		}
+		
 	}
 }

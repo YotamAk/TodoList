@@ -25,11 +25,15 @@ public class User {
 	}
 	
 	public User (User _user) {
-		id = _user.getId();
-		firstName = _user.getFirstName();
-		lastName = _user.getLastName();
-		email = _user.getEmail();
-		password = _user.getPassword();
+		if (_user != null){
+			id = _user.getId();
+			firstName = _user.getFirstName();
+			lastName = _user.getLastName();
+			email = _user.getEmail();
+			password = _user.getPassword();	
+		}
+		else id = -1;
+
 	}
 
 	public int getId() {

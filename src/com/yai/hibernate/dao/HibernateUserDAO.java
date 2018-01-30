@@ -48,6 +48,8 @@ public class HibernateUserDAO implements IUserDAO {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);
 			List results = query.list();
+			if (results.size() == 0)
+				return null;
 			user = (User) results.get(0);
 		} catch(HibernateException e) {
             System.out.print("error: ");
@@ -55,7 +57,7 @@ public class HibernateUserDAO implements IUserDAO {
 		}
 		if (user.getPassword().equals(password)){
 			return user;
-		}	
+		}
 		return null;
 		
 	}

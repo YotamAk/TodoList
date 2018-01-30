@@ -22,7 +22,7 @@
 	             		<input type="hidden" class="user-id" value="<%=currentUser.getId()%>" name="userid">
 	             	    <input type="text" class="form-control add-todo" name="newItem"><br>
 	                	<button class="additem btn btn-info" value="item" >Add</button><br>
-				 <button id="checkAll" class="btn btn-success">Mark all as done</button> 
+
 	                    <hr>
 	                    <ul id="sortable" class="list-unstyled">
 	                    	<%Iterator itr = null; %>
@@ -41,6 +41,7 @@
 	                    <strong><span class="count-todos"></span></strong> Items Left
 	                </div>
 	            </div>
+	            <button id="checkAll" class="btn btn-danger">Mark all as done</button> 
 	        </div>
 	        <div class="col-md-6">
 	            <div class="todolist">

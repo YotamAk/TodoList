@@ -14,9 +14,11 @@
 	  <div class="form">
 	    <form class="login-form" action="login" method="GET">
 	      <h3 class="text-success page-header">Welcome</h3>
-	      <input type="text" placeholder="email" name="email"/>
-	      <input type="password" placeholder="password" name="password"/>
+	      <input type="text" placeholder="email" name="email" required/>
+	      <input type="password" placeholder="password" name="password" required/>
 	      <button class="btn btn-success" value="login">login</button>
+	       <% String error = (String) (session.getAttribute("loginError"));%> 
+		   <%if (error == "true") out.print("<span class=\"error\">Wrong email or password entered</span>");%>
 	      <p class="text-success">Not registered? <a class="text-danger" href="register.jsp">Register here</a></p>
 
 	    </form>

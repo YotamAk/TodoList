@@ -45,11 +45,18 @@ public class UserControllerServlet extends HttpServlet{
 			//create a userDAO object to get user data by email and check by password
 			HibernateUserDAO userDAO = new HibernateUserDAO();
 			User user = new User(userDAO.getUser(email, password));
-			List tasks = HibernateToDoListDAO.getInstance().getAllItems(user.getId());
-			session.setAttribute("currentSessionUser", user);
-			session.setAttribute("firstName", user.getFirstName());
-			session.setAttribute("currentSessionTasks", tasks);
-			response.sendRedirect("todo");
+			//if email or password is wrong, we create a NULL user with an id of -1
+			if (user.getId() == -1){
+				session.setAttribute("loginError", "true");
+				response.sendRedirect("index.jsp");
+			}
+			else {
+				List tasks = HibernateToDoListDAO.getInstance().getAllItems(user.getId());
+				session.setAttribute("currentSessionUser", user);
+				session.setAttribute("firstName", user.getFirstName());
+				session.setAttribute("currentSessionTasks", tasks);
+				response.sendRedirect("todo");	
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

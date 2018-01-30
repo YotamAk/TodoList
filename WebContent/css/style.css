@@ -68,6 +68,10 @@ body{
   display: none;
 }
 
+.error {
+	color: red;
+}
+
 .container {
   position: relative;
   z-index: 1;
